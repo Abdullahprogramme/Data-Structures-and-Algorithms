@@ -1,0 +1,8 @@
+For "TextBufferArray" I placed the stopwatch right before inserting the text and checked the elapsed time after inserting the letter 'Y'.
+The time recorded was 0.0020057 seconds. On another instant it was 0.0023709 seconds.
+
+For "TextBufferList" I placed the stopwatch right before inserting the text and checked the elapsed time after inserting the letter 'Y'.
+The time recorded was 0.0007736 seconds. On another instant it was 0.0032019 seconds.
+
+This shows the Stack made from array is taking around more than 200% time than the stack made from LinkList. On the second attempt it was around 74% faster.
+In general this shows that linked list is much faster than the array.
