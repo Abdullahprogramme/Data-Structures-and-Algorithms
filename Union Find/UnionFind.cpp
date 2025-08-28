@@ -48,6 +48,18 @@ class UnionFind {
         }
 };
 
+/*
+Worst case:
+The worst case occurs when the tree is completely unbalanced, resembling a linked list.
+In this scenario, the time complexity for find and union operations can degrade to O(n).
+*/
+
+/*
+Best case:
+The best case occurs when the tree is completely balanced, with all nodes having similar depths.
+In this scenario, the time complexity for find and union operations is nearly constant, O(log n), due to the tree's balanced nature.
+*/
+
 // Find number of connected components in a graph
 int countComponents(int n, vector<vector<int>>& edges) {
     UnionFind uf(n);
