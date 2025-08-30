@@ -27,7 +27,7 @@ class QuickFind {
             int qID = find(q);
             if (pID != qID) {
                 for (int i = 0; i < id.size(); i++) {
-                    if (id[i] == pID) {
+                    if (id[i] == pID) { // Making all elements connected to pID point to qID
                         id[i] = qID;
                     }
                 }

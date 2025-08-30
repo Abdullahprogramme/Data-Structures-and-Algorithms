@@ -24,7 +24,7 @@ class QuickUnion {
         void unite(int p, int q) {
             int pID = find(p);
             int qID = find(q);
-            if (pID != qID) {
+            if (pID != qID) { // Making the root of p point to the root of q
                 id[pID] = qID;
             }
         }
