@@ -1,0 +1,34 @@
+Compare the standard Quick-Find UF with Weighted Quick-Union UF.
+What was your initial hypothesis and does the result support this?
+
+* You only need to submit the implementation using Weighted Quick-Union UF *
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Initial Hypothesis:
+Weighted Quick-Union UF would be significantly faster and scale better than Quick-Find UF for large n, due to its logarithmic time complexity for union/find operations, while Quick-Find is linear and as discussed in classes that weighted is better in general.
+
+# Quick-Find UF results:
+1st iteration -> I started with n = 50 and T = 100 where the time it took was 0.789559 seconds.
+2nd iteration -> Then I tested with n = 100 and T = 100 and this time it took 12.7472 seconds.
+3rd iteration -> Then I tested with n = 200 and T = 100 and the time it took was 204.975 seconds.
+This shows that in between n = 100 and n = 200 it took a jump of 1608% or to say 16.08 times.
+4th iteration -> Finally the closest value was at n = 150 and T = 100, where it took 62.3936 seconds, a little over a minute.
+
+# Weighted Quick-Union UF results:
+1st iteration -> I started with n = 50 and T = 100 where the time it took was 0.057567 seconds.
+2nd iteration -> Then I tested with n = 100 and T = 100 and this time it took 0.179874 seconds.
+3rd iteration -> Then I tested with n = 200 and T = 100 and the time it took was 0.66353 seconds.
+4th iteration -> Then I tested at n = 400 and T = 100, where it took 2.9397 seconds.
+5th iteration -> Then I tested at n = 800 and T = 100, where it took 12.4846 seconds.
+6th iteration -> Then I tested at n = 1600 and T = 100, where it took 75.9318 seconds.
+This shows that in between n = 800 and n = 1600 it took a jump of 608% or to say 6.08 times.
+7th iteration -> Finally the closest value was at n = 1500 and T = 100, where it took 61.8139 seconds, a little over a minute.
+
+Analysis:
+Quick-Find UF performance degrades rapidly as n increases, with runtime growing much faster than Weighted Quick-Union UF. 
+Weighted Quick-Union UF remains efficient even for large n, supporting much larger grids in under a minute. 
+The results strongly support the hypothesis: Weighted Quick-Union UF is far superior for percolation simulations, especially as n grows.
+
+Conclusion:
+Weighted Quick-Union UF should be used for percolation problems due to its scalability and efficiency. 
+Quick-Find UF is only practical for very small grids which the results shows.
