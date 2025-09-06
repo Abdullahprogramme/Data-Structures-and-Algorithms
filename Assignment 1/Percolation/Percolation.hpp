@@ -5,6 +5,8 @@
 #include <cassert>
 #include <iostream>
 #include <stdexcept>
+#include <numeric>
+#include <unordered_map>
 
 using namespace std;
 
@@ -63,6 +65,9 @@ class Percolation {
                 parent[i] = i; // each site is its own parent
             }
 
+            // Another way
+            // iota(parent.begin(), parent.end(), 0);
+
             Top = n * n;
             Bottom = n * n + 1;
         }
@@ -85,10 +90,9 @@ class Percolation {
                 if (row == n - 1) unite(curr, Bottom);
 
                 // Connect to adjacent open sites
-                const int dr[] = {-1, 1, 0, 0};
-                const int dc[] = {0, 0, -1, 1};
-                for (int d = 0; d < 4; ++d) {
-                    int nr = row + dr[d], nc = col + dc[d];
+                const unordered_map<int, int> dirMap = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+                for (const auto& [dr, dc] : dirMap) {
+                    int nr = row + dr, nc = col + dc;
                     if (nr >= 0 && nr < n && nc >= 0 && nc < n && isOpen(nr, nc)) {
                         unite(curr, index(nr, nc));
                     }
