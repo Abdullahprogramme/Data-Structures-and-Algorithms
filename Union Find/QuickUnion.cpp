@@ -21,6 +21,7 @@ class QuickUnion {
             return find(p) == find(q);
         }
 
+        // O(h) time complexity, where h is the height of the tree
         void unite(int p, int q) {
             int pID = find(p);
             int qID = find(q);
@@ -29,6 +30,7 @@ class QuickUnion {
             }
         }
 
+        // O(h) time complexity, where h is the height of the tree
         int find(int p) {
             while (p != id[p]) {
                 p = id[p];

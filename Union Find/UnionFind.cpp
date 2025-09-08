@@ -24,6 +24,7 @@ class UnionFind {
             }
         }
 
+        // O(h) time complexity, where h is the height of the tree
         int find(int u) {
             if (parent[u] != u) {
                 parent[u] = find(parent[u]);  // Path compression
@@ -31,6 +32,7 @@ class UnionFind {
             return parent[u];
         }
 
+        // O(h) time complexity, where h is the height of the tree
         void unify(int u, int v) {
             int rootU = find(u);
             int rootV = find(v);

@@ -22,6 +22,7 @@ class QuickFind {
             return find(p) == find(q);
         }
 
+        // O(n) time complexity
         void unite(int p, int q) {
             int pID = find(p);
             int qID = find(q);
@@ -34,6 +35,7 @@ class QuickFind {
             }
         }
 
+        // O(1) time complexity
         int find(int p) {
             return id[p];
         }
