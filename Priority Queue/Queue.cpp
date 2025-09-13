@@ -51,7 +51,7 @@ class PriorityQueue {
                 throw runtime_error("Priority Queue is empty");
             }
 
-           // Always return the top element
+            // Always return the top element
             return queue[--n];
         }
 
