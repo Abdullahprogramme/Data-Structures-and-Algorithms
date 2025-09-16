@@ -26,6 +26,7 @@ class SymbolTable {
             if (key == Key()) {
                 throw invalid_argument("Key cannot be null");
             }
+            
             if (!contains(key)) {
                 table[key] = value;
             } else if (value == Value()) {
