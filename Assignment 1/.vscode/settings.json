@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "vector": "cpp",
+        "stdexcept": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "cassert": "cpp",
+        "iostream": "cpp",
+        "cmath": "cpp",
+        "random": "cpp",
+        "algorithm": "cpp",
+    }
+}
