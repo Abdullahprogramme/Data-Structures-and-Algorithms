@@ -111,6 +111,52 @@ class BST {
             throw runtime_error("operator[]: Unexpected error");
         }
 
+        // Largest key in the BST less than or equal to val
+        Key floor(const Key& val) {
+            Node* node = root;
+            Node* floorNode = nullptr;
+            while (node) {
+                if (node->key == val) {
+                    return node->key;
+                }
+
+                if (node->key < val) {
+                    floorNode = node;
+                    node = node->right;
+                } else {
+                    node = node->left;
+                }
+            }
+
+            if (!floorNode) {
+                throw runtime_error("No floor key found.");
+            }
+            return floorNode->key;
+        }
+
+        // Smallest key in the BST greater than or equal to val
+        Key ceil(const Key& val) {
+            Node* node = root;
+            Node* ceilNode = nullptr;
+            while (node) {
+                if (node->key == val) {
+                    return node->key;
+                }
+
+                if (node->key > val) {
+                    ceilNode = node;
+                    node = node->left;
+                } else {
+                    node = node->right;
+                }
+            }
+
+            if (!ceilNode) {
+                throw runtime_error("No ceiling key found.");
+            }
+            return ceilNode->key;
+        }
+
     private:
         Node* root;
 
@@ -207,52 +253,6 @@ class BST {
             clear(node->right);
             delete node;
         }
-
-        // Largest key in the BST less than or equal to val
-        Value floor(int val) {
-            Node* node = root;
-            Value floorVal = -1; // Assuming all values are non-negative
-            while (node) {
-                if (node->value == val) {
-                    return node->value;
-                }
-
-                if (node->value < val) {
-                    floorVal = node->value;
-                    node = node->right;
-                } else {
-                    node = node->left;
-                }
-            }
-
-            if (floorVal == -1) {
-                throw runtime_error("No floor value found.");
-            }
-            return floorVal;
-        }
-
-        // Smallest key in the BST greater than or equal to val
-        Value ceil(int val) {
-            Node* node = root;
-            Value ceilVal = -1; // Assuming all values are non-negative
-            while (node) {
-                if (node->value == val) {
-                    return node->value;
-                }
-
-                if (node->value > val) {
-                    ceilVal = node->value;
-                    node = node->left;
-                } else {
-                    node = node->right;
-                }
-            }
-
-            if (ceilVal == -1) {
-                throw runtime_error("No ceiling value found.");
-            }
-            return ceilVal;
-        }
 };
 
 // Example usage
@@ -278,6 +278,15 @@ int main() {
     cout << "tree[7] = " << tree[7] << endl;
     cout << "tree[5] = " << tree[5] << endl;
     cout << "tree[12] = " << tree[12] << endl;
+
+    try {
+        cout << "Floor of 8: " << tree.floor(8) << endl; // should be 7
+        cout << "Ceil of 8: " << tree.ceil(8) << endl;   // should be 10
+        cout << "Floor of 12: " << tree.floor(12) << endl; // should be 12
+        cout << "Ceil of 6: " << tree.ceil(6) << endl;   // should be 7
+    } catch (const exception& e) {
+        cout << "Error: " << e.what() << endl;
+    }
 
     return 0;
 }
