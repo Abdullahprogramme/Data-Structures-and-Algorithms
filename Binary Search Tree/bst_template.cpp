@@ -209,9 +209,9 @@ class BST {
         }
 
         // Largest key in the BST less than or equal to val
-        int floor(int val) {
+        Value floor(int val) {
             Node* node = root;
-            int floorVal = -1; // Assuming all values are non-negative
+            Value floorVal = -1; // Assuming all values are non-negative
             while (node) {
                 if (node->value == val) {
                     return node->value;
@@ -232,9 +232,9 @@ class BST {
         }
 
         // Smallest key in the BST greater than or equal to val
-        int ceil(int val) {
+        Value ceil(int val) {
             Node* node = root;
-            int ceilVal = -1; // Assuming all values are non-negative
+            Value ceilVal = -1; // Assuming all values are non-negative
             while (node) {
                 if (node->value == val) {
                     return node->value;
