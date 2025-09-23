@@ -192,6 +192,52 @@ class BST {
             clear(node->right);
             delete node;
         }
+
+        // Largest key in the BST less than or equal to val
+        int floor(int val) {
+            Node* node = root;
+            int floorVal = -1; // Assuming all values are non-negative
+            while (node) {
+                if (node->value == val) {
+                    return node->value;
+                }
+
+                if (node->value < val) {
+                    floorVal = node->value;
+                    node = node->right;
+                } else {
+                    node = node->left;
+                }
+            }
+
+            if (floorVal == -1) {
+                throw runtime_error("No floor value found.");
+            }
+            return floorVal;
+        }
+
+        // Smallest key in the BST greater than or equal to val
+        int ceil(int val) {
+            Node* node = root;
+            int ceilVal = -1; // Assuming all values are non-negative
+            while (node) {
+                if (node->value == val) {
+                    return node->value;
+                }
+
+                if (node->value > val) {
+                    ceilVal = node->value;
+                    node = node->left;
+                } else {
+                    node = node->right;
+                }
+            }
+
+            if (ceilVal == -1) {
+                throw runtime_error("No ceiling value found.");
+            }
+            return ceilVal;
+        }
 };
 
 int main() {
