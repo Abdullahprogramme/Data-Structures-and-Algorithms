@@ -4,6 +4,7 @@
 #include <vector>
 #include <stdexcept>
 #include <sstream>
+#include <functional>
 
 using namespace std;
 
@@ -135,6 +136,36 @@ class BST {
                 throw runtime_error("No ceiling value found.");
             }
             return ceilVal;
+        }
+
+        int select(int k) {
+            if (k < 0 || k >= inorder().size()) {
+                throw out_of_range("Index out  of range in select()");
+            }
+
+            function<int(Node*)> subtree_size = [&](Node* node) -> int {
+                if (!node) return 0;
+                return 1 + subtree_size(node->left) + subtree_size(node->right);
+            };
+
+            // int subtree_size = [&](Node* node) -> int {
+            //     if (!node) return 0;
+            //     return 1 + subtree_size(node->left) + subtree_size(node->right);
+            // };
+
+            function<int(Node*, int)> select_helper = [&](Node* node, int k) -> int {
+                if (!node) throw runtime_error("Unexpected null node in select_helper");
+                int size_left = subtree_size(node->left);
+                if (size_left > k) {
+                    return select_helper(node->left, k);
+                } else if (size_left < k) {
+                    return select_helper(node->right, k - size_left - 1);
+                } else {
+                    return node->value;
+                }
+            };
+
+            return select_helper(root, k);
         }
 
     private:

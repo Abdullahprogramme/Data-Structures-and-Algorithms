@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <string>
+#include <functional>
 
 using namespace std;
 
@@ -155,6 +156,26 @@ class BST {
                 throw runtime_error("No ceiling key found.");
             }
             return ceilNode->key;
+        }
+
+        Key select(int k) {
+            if (k < 0 || k >= inorder_keys().size()) {
+                throw out_of_range("Index out  of range in select()");
+            }
+
+            function<Key(Node*, int&)> select_helper = [&](Node* node, int& k) -> Key {
+                if (!Node) throw runtime_error("Unexpected null node in select_helper");
+                int size_left = node->left ? inorder_keys().size() : 0;
+                if (size_left > k) {
+                    return select_helper(node->left, k);
+                } else if (size_left < k) {
+                    return select_helper(node->right, k - size_left - 1);
+                } else {
+                    return node->key;
+                }
+            };
+
+            return select_helper(root, k);
         }
 
     private:
