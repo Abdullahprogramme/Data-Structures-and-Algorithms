@@ -92,6 +92,26 @@ class BST {
             return res;
         }
 
+        vector<int> level_order() {
+            vector<int> res;
+            if (!root) return res;
+
+            vector<Node*> current_level;
+            current_level.push_back(root);
+
+            while (!current_level.empty()) {
+                vector<Node*> next_level;
+                for (Node* node : current_level) {
+                    res.push_back(node->value);
+                    if (node->left) next_level.push_back(node->left);
+                    if (node->right) next_level.push_back(node->right);
+                }
+                current_level = next_level;
+            }
+
+            return res;
+        }
+
         // Largest key in the BST less than or equal to val
         int floor(int val) {
             Node* node = root;
