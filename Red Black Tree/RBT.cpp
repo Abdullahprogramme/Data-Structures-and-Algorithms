@@ -4,12 +4,12 @@ using namespace std;
 // Node structure for the Red-Black Tree
 struct Node {
     int data;
-    string color;
+    enum { RED, BLACK } color;
     Node *left, *right, *parent;
 
     Node(int data)
         : data(data)
-        , color("RED")
+        , color(RED)
         , left(nullptr)
         , right(nullptr)
         , parent(nullptr) {}
@@ -66,13 +66,13 @@ class RedBlackTree {
         // Function to fix Red-Black Tree properties after
         // insertion
         void fixInsert(Node* k) {
-            while (k != root && k->parent->color == "RED") {
+            while (k != root && k->parent->color == Node::RED) {
                 if (k->parent == k->parent->parent->left) {
                     Node* u = k->parent->parent->right; // uncle
-                    if (u->color == "RED") {
-                        k->parent->color = "BLACK";
-                        u->color = "BLACK";
-                        k->parent->parent->color = "RED";
+                    if (u->color == Node::RED) {
+                        k->parent->color = Node::BLACK;
+                        u->color = Node::BLACK;
+                        k->parent->parent->color = Node::RED;
                         k = k->parent->parent;
                     }
                     else {
@@ -80,17 +80,17 @@ class RedBlackTree {
                             k = k->parent;
                             leftRotate(k);
                         }
-                        k->parent->color = "BLACK";
-                        k->parent->parent->color = "RED";
+                        k->parent->color = Node::BLACK;
+                        k->parent->parent->color = Node::RED;
                         rightRotate(k->parent->parent);
                     }
                 }
                 else {
                     Node* u = k->parent->parent->left; // uncle
-                    if (u->color == "RED") {
-                        k->parent->color = "BLACK";
-                        u->color = "BLACK";
-                        k->parent->parent->color = "RED";
+                    if (u->color == Node::RED) {
+                        k->parent->color = Node::BLACK;
+                        u->color = Node::BLACK;
+                        k->parent->parent->color = Node::RED;
                         k = k->parent->parent;
                     }
                     else {
@@ -98,13 +98,13 @@ class RedBlackTree {
                             k = k->parent;
                             rightRotate(k);
                         }
-                        k->parent->color = "BLACK";
-                        k->parent->parent->color = "RED";
+                        k->parent->color = Node::BLACK;
+                        k->parent->parent->color = Node::RED;
                         leftRotate(k->parent->parent);
                     }
                 }
             }
-            root->color = "BLACK";
+            root->color = Node::BLACK;
         }
 
         // Inorder traversal helper function
@@ -131,7 +131,7 @@ class RedBlackTree {
         // Constructor
         RedBlackTree() {
             NIL = new Node(0);
-            NIL->color = "BLACK";
+            NIL->color = Node::BLACK;
             NIL->left = NIL->right = NIL;
             root = NIL;
         }
@@ -169,7 +169,7 @@ class RedBlackTree {
             }
 
             if (new_node->parent == nullptr) {
-                new_node->color = "BLACK";
+                new_node->color = Node::BLACK;
                 return;
             }
 
