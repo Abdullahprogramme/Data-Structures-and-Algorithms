@@ -28,14 +28,13 @@ class RedBlackTree {
             if (y->left != NIL) {
                 y->left->parent = x;
             }
+
             y->parent = x->parent;
             if (x->parent == nullptr) {
                 root = y;
-            }
-            else if (x == x->parent->left) {
+            } else if (x == x->parent->left) {
                 x->parent->left = y;
-            }
-            else {
+            } else {
                 x->parent->right = y;
             }
             y->left = x;
@@ -49,14 +48,13 @@ class RedBlackTree {
             if (y->right != NIL) {
                 y->right->parent = x;
             }
+
             y->parent = x->parent;
             if (x->parent == nullptr) {
                 root = y;
-            }
-            else if (x == x->parent->right) {
+            } else if (x == x->parent->right) {
                 x->parent->right = y;
-            }
-            else {
+            } else {
                 x->parent->left = y;
             }
             y->right = x;
@@ -74,8 +72,7 @@ class RedBlackTree {
                         u->color = Node::BLACK;
                         k->parent->parent->color = Node::RED;
                         k = k->parent->parent;
-                    }
-                    else {
+                    } else {
                         if (k == k->parent->right) {
                             k = k->parent;
                             leftRotate(k);
@@ -84,16 +81,14 @@ class RedBlackTree {
                         k->parent->parent->color = Node::RED;
                         rightRotate(k->parent->parent);
                     }
-                }
-                else {
+                } else {
                     Node* u = k->parent->parent->left; // uncle
                     if (u->color == Node::RED) {
                         k->parent->color = Node::BLACK;
                         u->color = Node::BLACK;
                         k->parent->parent->color = Node::RED;
                         k = k->parent->parent;
-                    }
-                    else {
+                    } else {
                         if (k == k->parent->left) {
                             k = k->parent;
                             rightRotate(k);
@@ -121,6 +116,7 @@ class RedBlackTree {
             if (node == NIL || data == node->data) {
                 return node;
             }
+
             if (data < node->data) {
                 return searchHelper(node->left, data);
             }
@@ -150,8 +146,7 @@ class RedBlackTree {
                 parent = current;
                 if (new_node->data < current->data) {
                     current = current->left;
-                }
-                else {
+                } else {
                     current = current->right;
                 }
             }
@@ -160,11 +155,9 @@ class RedBlackTree {
 
             if (parent == nullptr) {
                 root = new_node;
-            }
-            else if (new_node->data < parent->data) {
+            } else if (new_node->data < parent->data) {
                 parent->left = new_node;
-            }
-            else {
+            } else {
                 parent->right = new_node;
             }
 
