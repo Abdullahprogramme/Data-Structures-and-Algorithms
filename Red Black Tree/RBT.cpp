@@ -61,8 +61,7 @@ class RedBlackTree {
             x->parent = y;
         }
 
-        // Function to fix Red-Black Tree properties after
-        // insertion
+        // Function to fix Red-Black Tree properties after insertion
         void fixInsert(Node* k) {
             while (k != root && k->parent->color == Node::RED) {
                 if (k->parent == k->parent->parent->left) {
