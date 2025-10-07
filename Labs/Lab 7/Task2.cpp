@@ -47,6 +47,15 @@ int findClosestKey2(RedBlackBST<int, string>& tree, int target) {
 
     findClosest(tree.root);
     return closest;
+
+    // int node1 = tree.ceiling(target);
+    // int node2 = tree.floor(target);
+
+    // if (node1 == -1 && node2 == -1) return -1;
+    // if (node1 == -1) return node2;
+    // if (node2 == -1) return node1;
+
+    // return (abs(node1 - target) < abs(node2 - target)) ? node1 : node2;
 }
 
 int main() {
