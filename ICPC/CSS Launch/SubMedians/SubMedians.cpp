@@ -18,7 +18,7 @@ bool can(int v, vector<int> &a, int k, int &L, int &R) {
                 return true;
             }
         }
-        
+
         if (i - k + 1 >= 0 && pref[i - k + 1] < minPref) {
             minPref = pref[i - k + 1];
             minIndex = i - k + 1;
@@ -32,8 +32,8 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    freopen("subMedians.in", "r", stdin);
-    freopen("subMedians.out", "w", stdout);
+    freopen("SubMedians.in", "r", stdin);
+    freopen("SubMedians.out", "w", stdout);
 
     int t;
     cin >> t;
