@@ -51,7 +51,7 @@ void addVertices(Graph &G, const vector<string> &vertices) {
     }
 }
 
-void addEdges(Graph &G, const vector<tuple<string,string,int>> &edges) {
+void addEdges(Graph &G, const vector<tuple<string, string, int>> &edges) {
     for (const auto &t : edges) {
         const string &u = get<0>(t);
         const string &v = get<1>(t);

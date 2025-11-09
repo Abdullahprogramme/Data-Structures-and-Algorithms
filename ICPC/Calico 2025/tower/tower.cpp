@@ -4,8 +4,7 @@
 #include <climits>
 using namespace std;
 
-long long helper(vector<int>& P, vector<int>& D, int start) {
-    int N = P.size();
+long long helper(vector<int>& P, vector<int>& D, int start, int N) {
     vector<bool> visited(N, false);
     long long time = 0;
     int current = start;
@@ -37,10 +36,15 @@ long long helper(vector<int>& P, vector<int>& D, int start) {
 
 
 void solve(int N, vector<int>& P, vector<int>& D) {
+    if (P.size() == 0 || D.size() == 0) {
+        cout << 0 << endl;
+        return;
+    }
+
     long long best_time = LLONG_MAX;
     for (int i = 0; i < N; i++) {
 
-        best_time = min(best_time, helper(P, D, i));
+        best_time = min(best_time, helper(P, D, i, N));
 
         // cout << endl;
     }
