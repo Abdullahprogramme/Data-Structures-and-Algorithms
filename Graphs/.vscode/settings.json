@@ -3,6 +3,7 @@
         "utility": "cpp",
         "xhash": "cpp",
         "xstring": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "tuple": "cpp"
     }
 }

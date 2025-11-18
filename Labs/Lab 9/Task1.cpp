@@ -30,8 +30,8 @@ int main(int argc, char** argv) {
     vector<vector<Cell>> grid(n+2, vector<Cell>(n+2));
     // mark border cells as visited so algorithm won't try to step outside
     for (int i = 0; i <= n + 1; i++) { 
-        grid[0][i].visited = grid[n + 1][i].visited = true; 
-        grid[i][0].visited = grid[i][n + 1].visited = true; 
+        grid[0][i].visited = grid[n + 1][i].visited = true; // marking top and bottom rows
+        grid[i][0].visited = grid[i][n + 1].visited = true; // marking left and right columns
     }
 
     // random
