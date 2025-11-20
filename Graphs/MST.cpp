@@ -12,12 +12,15 @@ class DisjointSet {
         unordered_map<string, string> parent;
 
     public:
+
+        // Time Complexity: O(n), in terms of edges: O(E)
         void makeSet(const vector<string> &elements) {
             for (const auto &e : elements) {
                 parent[e] = e;
             }
         }
 
+        // Time Complexity: O(log n) on average, in terms of edges: O(E)
         string find(const string &element) {
             if (parent[element] != element) {
                 parent[element] = find(parent[element]);
@@ -25,6 +28,7 @@ class DisjointSet {
             return parent[element];
         }
 
+        // Time Complexity: O(log n) on average, in terms of edges: O(E)
         void Union(const string &a, const string &b) {
             string rootA = find(a);
             string rootB = find(b);
@@ -45,6 +49,8 @@ pair<Graph, int> Kruskal_MST(const Graph &edges, const vector<string> &vertices)
 
     // sort edges by weight
     auto sorted_edges = edges;
+
+    // Sorting takes O(E log E)
     sort(sorted_edges.begin(), sorted_edges.end(), [](const auto &a, const auto &b) {
         return get<2>(a) < get<2>(b);
     });
