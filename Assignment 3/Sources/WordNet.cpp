@@ -44,8 +44,8 @@ WordNet::WordNet(const string& synsetsFile, const string& hypernymsFile) {
     p_wordnet = new wordnet();
     ifstream fin(synsetsFile);
     if (!fin) { 
-        delete p_wordnet
-        ; throw invalid_argument("cannot open synsets file"); 
+        delete p_wordnet; 
+        throw invalid_argument("cannot open synsets file"); 
     }
 
     string line;
@@ -60,7 +60,7 @@ WordNet::WordNet(const string& synsetsFile, const string& hypernymsFile) {
         int id = stoi(idstr);
 
         if (id > maxId) maxId = id;
-        if ((int)p_wordnet->idToSynset.size() <= id) p_wordnet->idToSynset.resize(id+1);
+        if ((int)p_wordnet->idToSynset.size() <= id) p_wordnet->idToSynset.resize(id + 1);
 
         p_wordnet->idToSynset[id] = synset;
         
