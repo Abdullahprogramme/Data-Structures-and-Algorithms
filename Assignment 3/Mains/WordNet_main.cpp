@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
         if (len == 1) {
             G.addEdge(start, root);
         } else {
-            for (int j = 1; j <= len-1; ++j) {
+            for (int j = 1; j <= len - 1; ++j) {
                 int v = next++;
                 G.addEdge(current, v);
                 current = v;

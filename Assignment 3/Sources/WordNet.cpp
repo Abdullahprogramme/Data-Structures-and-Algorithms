@@ -103,7 +103,7 @@ WordNet::WordNet(const string& synsetsFile, const string& hypernymsFile) {
 
     fin2.close();
 
-    // Build SCA and validate rooted DAG in its constructor
+    // Build SCA and validate DAG
     p_wordnet->sca = new ShortestCommonAncestor(*p_wordnet->G);
 }
 

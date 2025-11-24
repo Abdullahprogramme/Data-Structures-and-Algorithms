@@ -139,15 +139,21 @@ int ShortestCommonAncestor::ancestorSubset(const vector<int>& subsetA, const vec
 }
 
 int ShortestCommonAncestor::length(int v, int w) const {
-    validateVertex(v); validateVertex(w);
+    validateVertex(v); 
+    validateVertex(w);
 
-    vector<int> a{v}; vector<int> b{w};
+    vector<int> a{v}; 
+    vector<int> b{w};
+
     return lengthSubset(a, b);
 }
 
 int ShortestCommonAncestor::ancestor(int v, int w) const {
-    validateVertex(v); validateVertex(w);
+    validateVertex(v); 
+    validateVertex(w);
     
-    vector<int> a{v}; vector<int> b{w};
+    vector<int> a{v}; 
+    vector<int> b{w};
+    
     return ancestorSubset(a, b);
 }

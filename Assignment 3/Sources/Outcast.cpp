@@ -19,7 +19,7 @@ string Outcast::outcast(const vector<string>& nouns) const {
         long long sum = 0;
 
         for (size_t j = 0; j < nouns.size(); ++j) {
-            if (i == j) continue; // ignore self-distance
+            if (i == j) continue; // don't compare to self
 
             const string& xj = nouns[j];
             sum += wnRef.distance(xi, xj);

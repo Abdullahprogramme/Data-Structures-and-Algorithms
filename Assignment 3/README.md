@@ -40,7 +40,8 @@ Notes:
 .\SCA_main.exe
 ```
 
-- Run the Outcast demo (default limits to the first `K=20` nouns to keep runtime reasonable). Optionally pass `K` as the first argument:
+- Run the Outcast demo (default limits to the first `K=20` nouns to keep runtime easy). 
+- Optionally pass `K` as the first argument:
 
 ```powershell
 .\Outcast_main.exe          # runs with default K=20

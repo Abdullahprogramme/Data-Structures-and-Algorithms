@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
             K = (int)wn.nouns().size();
         }
 
-        // collect nouns and limit to first K (deterministic)
+        // collect first K nouns
         vector<string> alln(wn.nouns().begin(), wn.nouns().end());
         if ((int)alln.size() <= K) {
             K = (int)alln.size();
