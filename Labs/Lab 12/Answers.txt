@@ -1,0 +1,25 @@
+Q.1 : Phase Analysis: Add instrumentation to count the number of phases. Does it match the O(logV) bound?
+Ans.1 : I counted one per boruvka phase initially which gave 2*log(V) so now its one per whole loop where the average components decrease by a factor of 2 so in the end its O(log(V)).
+
+Q.2 : Edge Comparisons: How many times is each edge examined? Compare to Kruskal's algorithm.
+Ans.2 : In boruvka, each edge is examined in both phases so twice in each iteration. So up to log(V) times. Since there are a total of 'E' edges the total time will be O(E.log(V)).
+In kruskals each is checked only once since the loop goes one way. But that complexity is lower than the sorting of the edges which is O(E.log(E)).
+In total kruskals inspect once where boruvka may examine more than once per phase.
+
+Q.3 : Parallel Potential: Which parts of Boruvka's algorithm could be parallelized? How does this compare to Kruskal's and Prim's?
+Ans.3 : Boruvka can be parallelized since each phase has same initial steps which can run simultaneously. As soon as the cheapest weight (edge) is set, we can unify them.
+Whereas in kruskals it is not possible since edges has been sorted already and goes through smallest to largest. Prims also has the priority queue and has its own overhead, it is too sequential.
+
+Q.4 : Duplicate Handling: Why do we need to check compV != compW again when adding edges in phase 2?
+Ans.4 : Multiple chosen cheapest edges may change the union find's leaders/parents so before adding them in mst they need to be kept in separate components.
+This also removes adding a cycle.
+
+Q.5 : Space Complexity: What is the space complexity of your implementation? Can it be improved?
+Asn.5 : Complexities are:
+    Graph: O(V + E) because of adjacency list
+    Union Find: O(V) because of parent and rank vectors
+    Cheapest array: O(V)
+
+    Total Complexity: O(V +  E)
+
+We cannot really change the complexity much but can do minor improvements like reusing some constant values or use some better data type which saves memory. 
