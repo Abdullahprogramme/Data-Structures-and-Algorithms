@@ -4,6 +4,7 @@
         "xhash": "cpp",
         "xstring": "cpp",
         "unordered_map": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "unordered_set": "cpp"
     }
 }
