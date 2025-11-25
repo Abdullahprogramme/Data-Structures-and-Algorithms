@@ -128,19 +128,15 @@ class ShortestPath {
 
             // build vertex list and edge list
             vector<string> vertices;
-            unordered_map<string, int> idx;
+            vector<tuple<string, string, int>> edges; // edge list (u, v, weight)
 
             for (const auto &p : adj) {
                 vertices.push_back(p.first);
-            }
-            sort(vertices.begin(), vertices.end()); // sorting the vertices
-            for (size_t i = 0; i < vertices.size(); ++i) idx[vertices[i]] = (int)i;
 
-            vector<tuple<string, string, int>> edges; // edge list (u, v, weight)
-            for (const auto &p : adj) {
                 const string &u = p.first;
                 for (const auto &e : p.second) edges.emplace_back(u, e.first, e.second);
             }
+            sort(vertices.begin(), vertices.end()); // sorting the vertices
 
             unordered_map<string, long long> dist;
             unordered_map<string, string> prev;
