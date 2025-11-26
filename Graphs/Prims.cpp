@@ -54,6 +54,7 @@ pair<Graph, int> Prims_MST(const Graph &edges, const vector<string> &vertices) {
             for (const auto &nbr : adj[to]) {
                 const string &v = nbr.first;
                 int vw = nbr.second;
+                
                 if (!visited.count(v)) {
                     pq.push({vw, to, v});
                 }
