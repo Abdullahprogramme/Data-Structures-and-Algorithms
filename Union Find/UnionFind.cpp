@@ -83,8 +83,10 @@ bool hasCycle(int n, vector<vector<int>>& edges) {
         if (uf.find(edge[0]) == uf.find(edge[1])) {
             return true; // Cycle detected
         }
+
         uf.unify(edge[0], edge[1]);
     }
+
     return false;
 }
 
@@ -103,6 +105,7 @@ int kruskalMST(int n, vector<vector<int>>& edges) {
             mstWeight += edge[2];
         }
     }
+    
     return mstWeight;
 }
 

@@ -16,19 +16,24 @@ static bool is_prime(int n) {
 	if (n <= 1) return false;
 	if (n <= 3) return true;
 	if (n % 2 == 0) return false;
+
 	for (int i = 3; i * i <= n; i += 2)
 		if (n % i == 0) return false;
+
 	return true;
 }
 
 static int find_next_prime(int size) {
 	if (size < 2) return 2;
+
 	for (int i = size + 1; i < 2 * max(2, size); ++i) {
 		if (is_prime(i)) return i;
 	}
+
 	// Fallback: search further if nothing found in range
 	int i = max(size + 1, 2);
 	while (!is_prime(i)) ++i;
+
 	return i;
 }
 
@@ -49,6 +54,7 @@ public:
 		int count = 0;
 		for (const auto &k : keys)
 			if (k != "" && k != "#") ++count;
+			
 		return (double)count / (double)size;
 	}
 
@@ -58,6 +64,7 @@ public:
 		val = val >> 4; // match python's behavior
 		int idx = (int)(val % size);
 		if (idx < 0) idx = -idx;
+		
 		return idx;
 	}
 
@@ -105,6 +112,7 @@ public:
 					while (!(keys[index] == "" || keys[index] == "#")) {
 						index = collision_resolver(key, index);
 					}
+
 					keys[index] = key;
 					values[index] = val;
 				}
@@ -120,9 +128,11 @@ public:
 			values[index] = data;
 			return;
 		}
+
 		while (!(keys[index] == "" || keys[index] == "#")) {
 			index = collision_resolver(key, index);
 		}
+
 		keys[index] = key;
 		values[index] = data;
 	}
@@ -138,11 +148,13 @@ public:
 
 		index = collision_resolver(key, index);
 		collision_path[opNumber].push_back(index);
+
 		while (keys[index] != "" && keys[index] != "#") {
 			if (keys[index] == key) return &values[index];
 			index = collision_resolver(key, index);
 			collision_path[opNumber].push_back(index);
 		}
+
 		return nullptr;
 	}
 
@@ -157,6 +169,7 @@ public:
 			cout << "record Updated" << endl;
 			return;
 		}
+
 		while (keys[index] != "" && keys[index] != "#") {
 			index = collision_resolver(key, index);
 			collision_path[opNumber].push_back(index);
@@ -166,6 +179,7 @@ public:
 				return;
 			}
 		}
+		
 		cout << "record not found" << endl;
 	}
 

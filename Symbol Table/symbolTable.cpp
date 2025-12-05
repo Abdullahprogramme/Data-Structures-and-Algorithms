@@ -43,6 +43,7 @@ class SymbolTable {
             if (it != table.end()) {
                 return it->second;
             }
+
             return Value();
         }
 
@@ -73,6 +74,7 @@ class SymbolTable {
                     maxFreq = pair.second;
                 }
             }
+
             return maxFreq;
         }
 
@@ -98,6 +100,7 @@ ostream& operator<<(ostream& os, const SymbolTable<Key, Value>& st) {
     for (const auto& pair : st.getTable()) {
         os << pair.first << " : " << pair.second << "\n";
     }
+    
     return os;
 }
 

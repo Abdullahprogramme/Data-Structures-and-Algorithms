@@ -25,6 +25,7 @@ class DisjointSet {
             if (parent[element] != element) {
                 parent[element] = find(parent[element]);
             }
+
             return parent[element];
         }
 
@@ -32,6 +33,7 @@ class DisjointSet {
         void Union(const string &a, const string &b) {
             string rootA = find(a);
             string rootB = find(b);
+            
             if (rootA != rootB) {
                 parent[rootB] = rootA;
             }

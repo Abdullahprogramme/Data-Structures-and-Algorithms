@@ -18,9 +18,9 @@ static inline string trim(const string &s) {
     size_t a = 0, b = s.size();
 
     while (a < b && isspace((unsigned char)s[a])) ++a;
-    while (b > a && isspace((unsigned char)s[b-1])) --b;
+    while (b > a && isspace((unsigned char)s[b - 1])) --b;
 
-    return s.substr(a, b-a);
+    return s.substr(a, b - a);
 }
 
 vector<string> split_csv_line(const string &line) {
